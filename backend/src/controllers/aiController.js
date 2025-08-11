@@ -1,5 +1,6 @@
 import {createRequire} from "module";
 import mammoth from "mammoth";
+import {analyzeResume} from "../services/ai.service.js"
 
 //use of commonJs so that deubugMode is never triggered.
 const require = createRequire(import.meta.url);
@@ -32,11 +33,10 @@ export const getAnalysis = async(req,res) => {
             return res.status(400).send("Unable to extract text from the uploaded file.");
         }
 
-        res.status(200).send(resumeInfo);
+        const response = await analyzeResume(jobDescription, resumeInfo);
 
-        // console.log(resumeInfo);
+        return res.status(200).json({response})
 
-       // TODO: add aifunctionHere:
 
     } catch (error) {
         console.error("Error in getAnalysis", error);
