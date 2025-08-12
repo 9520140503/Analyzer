@@ -1,6 +1,6 @@
 import {createRequire} from "module";
 import mammoth from "mammoth";
-import {analyzeResume, careerGuider} from "../services/ai.service.js"
+import {analyzeResume, careerGuider, interviewGuider} from "../services/ai.service.js"
 
 //use of commonJs so that deubugMode is never triggered.
 const require = createRequire(import.meta.url);
@@ -40,9 +40,9 @@ export const getAnalysis = async(req,res) => {
 
     } catch (error) {
         console.error("Error in getAnalysis", error);
-        res.status(500).send("Server error");
+        res.status(500).json({ error: "Server error" });
     }
-}
+};
 
 export const careerGuide = async(req,res) => {
     const jobRole = req.body.jobRole;
@@ -51,6 +51,17 @@ export const careerGuide = async(req,res) => {
         res.status(200).json({response});
     } catch (error) {
         console.error("Error in careerGuide", error);
-        res.status(500).send("Server error");
+        res.status(500).json({ error: "Server error" });
     }
-}
+};
+
+export const interviewGuide = async(req,res) => {
+    const userPrompt = req.body.prompt;
+    try {
+        const response = await interviewGuider(userPrompt);
+        res.status(200).json({response});
+    } catch (error) {
+        console.error("Error in interviewGuide", error);
+         res.status(500).json({ error: "Server error" });
+    }
+};

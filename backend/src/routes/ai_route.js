@@ -1,5 +1,5 @@
 import {Router} from "express";
-import { getAnalysis, careerGuide } from "../controllers/aiController.js";
+import { getAnalysis, careerGuide, interviewGuide } from "../controllers/aiController.js";
 import multer from "multer";
 
 const aiRouter = Router();
@@ -14,5 +14,7 @@ aiRouter.get("/hello",(req,res) => {
 aiRouter.post('/analyze',upload.single("resume"),getAnalysis);
 
 aiRouter.post('/career-guide',careerGuide);
+
+aiRouter.post('/interview-guide',interviewGuide);
 
 export default aiRouter;
