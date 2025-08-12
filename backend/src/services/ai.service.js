@@ -117,3 +117,26 @@ export const careerGuider = async(jobRole) => {
     return jsonResult;
 }
 
+export const interviewGuider = async(userPrompt) => {
+    const model = genAi.getGenerativeModel({model:"gemini-2.0-flash"});
+    const prompt = `
+        You are a professional interview coach 🎯 with extensive expertise in technical, behavioral, and situational interviews across industries.
+
+        Given the user’s input prompt below, provide a detailed, clear, and actionable answer tailored to interview preparation. Your response may include:
+
+        - Relevant interview questions (technical, behavioral, or situational) with explanations or sample answers 💡
+        - Step-by-step guidance for common interview tasks (e.g., introducing yourself, answering behavioral questions) 🗣️
+        - Practical tips on interview etiquette, communication, and confidence 🤝
+        - Strategies for tackling challenging questions or scenarios 🎯
+        - Recommended resources or tools if applicable 📚
+
+        User Prompt: "${userPrompt}"
+
+        Respond in clear, professional language, focusing entirely on interview preparation. Avoid unrelated information or filler text. Structure your response logically for easy understanding.
+
+    `
+    const result = await model.generateContent(prompt);
+    const response = result.response.text();
+    return response;
+}
+
