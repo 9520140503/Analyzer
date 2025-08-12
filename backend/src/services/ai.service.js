@@ -47,3 +47,73 @@ export const analyzeResume = async (jobDescription, resumeInfo) => {
 
     return jsonResponse;
 };
+
+export const careerGuider = async(jobRole) => {
+    const model = genAi.getGenerativeModel({model:"gemini-2.0-flash"});
+    
+    const prompt = `
+        You are an expert career coach and roadmap planner with deep knowledge of modern tech industry requirements. 
+        Your task is to generate a step-by-step career roadmap in JSON format based on the user’s desired job role. 
+
+        The roadmap must:
+        - Be broken into sequential phases that progress from beginner to advanced.
+        - Clearly state duration for each phase in months.
+        - Include technical skills, soft skills, and project-building milestones.
+        - Suggest relevant free or high-quality learning resources.
+        - Add a creative "emojiTag" for each phase to make it visually engaging in UI.
+        - Be concise but complete — each phase should be actionable.
+
+        IMPORTANT:
+        - Output ONLY valid JSON.
+        - Do not add explanations, markdown, or extra text outside the JSON.
+        - Ensure JSON is clean and machine-readable (no trailing commas).
+
+        Output format:
+        {
+        "jobRole": "${jobRole}",
+        "totalDuration": "<total duration in months>",
+        "phases": [
+            {
+            "phase": "Phase 1: <Title>",
+            "duration": "X months",
+            "skills": ["Skill 1", "Skill 2", "Skill 3"],
+            "milestones": ["Milestone 1", "Milestone 2"],
+            "resources": [
+                {"name": "Resource Name", "type": "course/video/article", "link": "https://..."}
+            ],
+            "emojiTag": "🚀"
+            },
+            {
+            "phase": "Phase 2: <Title>",
+            "duration": "X months",
+            "skills": ["Skill 1", "Skill 2"],
+            "milestones": ["Milestone 1"],
+            "resources": [
+                {"name": "Resource Name", "type": "course", "link": "https://..."}
+            ],
+            "emojiTag": "💻"
+            }
+        ]
+        }
+
+        Example for emojiTag usage:
+        📚 for learning basics, 💻 for coding practice, 🚀 for final projects, 🎯 for job preparation.
+
+        Guidelines:
+        1. Ensure skills are relevant and up-to-date for the role.
+        2. Milestones should be measurable (e.g., “Build and deploy 3 small apps”).
+        3. Prefer free resources when possible.
+        4. Use consistent formatting for all phases.
+    `
+    const response = await model.generateContent(prompt);
+
+    const text = response.response.text();
+
+    const match = text.match(/\{[\s\S]*\}/);
+
+    if(!match) throw new Error("No valid JSON found in Gemini response.");
+    
+    const jsonResult = JSON.parse(match[0]);
+    return jsonResult;
+}
+
