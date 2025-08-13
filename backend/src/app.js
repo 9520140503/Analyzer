@@ -1,5 +1,6 @@
 import express from "express";
 import aiRouter from "./routes/ai_route.js";
+import userRouter from "./routes/user_route.js";
 
 const app = express();
 
@@ -11,5 +12,7 @@ app.get('/',(req,res) => {
 })
 
 app.use('/ai',aiRouter);
+
+app.use('/user',userRouter);
 
 export default app;
