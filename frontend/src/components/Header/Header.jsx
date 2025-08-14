@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from 'react-router-dom';
 import mainImage from "../../assets/guideIcon.png";
 import { Menu, X } from "lucide-react";
+import Logout from './Logout';
 
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
@@ -28,15 +29,15 @@ function Header() {
       </div>
 
       {/* Desktop Navigation */}
-      <ul className="hidden sm:flex gap-x-12 px-4 md:px-12 lg:px-16 text-sm md:text-md lg:text-lg font-semibold">
+      <ul className="hidden sm:flex items-center sm:gap-x-6 lg:gap-x-12 px-4 md:px-12 lg:px-16 font-semibold">
         {navItems.map(
           (navItem) =>
             navItem.status && (
-              <li key={navItem.path}>
+              <li key={navItem.path} className='text-xs md:text-sm lg:text-lg'>
                 <NavLink
                   to={navItem.path}
                   className={({ isActive }) =>
-                    isActive ? "text-orange-500" : "text-white"
+                    isActive ? "text-purple-500" : "text-white"
                   }
                 >
                   {navItem.name}
@@ -44,6 +45,9 @@ function Header() {
               </li>
             )
         )}
+
+        {authStatus &&
+            <li><Logout/></li>}
       </ul>
 
       {/* Mobile Menu Button */}
@@ -82,3 +86,4 @@ function Header() {
 }
 
 export default Header;
+ 
