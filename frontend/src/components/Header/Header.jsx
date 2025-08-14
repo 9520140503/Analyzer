@@ -18,8 +18,7 @@ function Header() {
   ];
 
   return (
-    <div className="w-full sticky top-0 left-0 z-50 bg-white/10 backdrop-blur-md text-white px-4 py-3 flex items-center justify-between">
-      
+    <div className="w-full sticky top-0 left-0 z-50 border-4 border-blue-500 shadow-lg shadow-white bg-white/10 backdrop-blur-md text-white px-4 py-3 flex items-center justify-between">
       {/* Logo */}
       <div className="flex items-center gap-2">
         <img src={mainImage} alt="" className="w-7 h-6 md:h-8 md:w-9" />

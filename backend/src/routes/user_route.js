@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { signup, login, logout, updateProfile } from "../controllers/userController.js";
+import { signup, login, logout, updateProfile, profile } from "../controllers/userController.js";
 import { authenticate } from "../middleware/authMiddleware.js";
 
 const userRouter = Router();
@@ -7,6 +7,8 @@ const userRouter = Router();
 userRouter.post('/signup',signup);
 
 userRouter.post('/login',login);
+
+userRouter.get('/get-profile',authenticate,profile)
 
 userRouter.put('/update-profile',authenticate,updateProfile);
 

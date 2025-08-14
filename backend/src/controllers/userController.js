@@ -88,6 +88,14 @@ export const updateProfile = async(req,res) => {
     }
 };
 
+export const profile = async(req,res) => {
+    const user = req.user;
+    const {image,fullname,email,mobile} = user;
+    res.json({
+        image,fullname,email,mobile
+    })
+}
+
 export const logout = async(req,res) => {
     try {
         res.status(200).json({message: "Logout Successfully"});
