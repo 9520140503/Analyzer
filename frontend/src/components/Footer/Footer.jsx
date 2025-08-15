@@ -34,8 +34,8 @@ function Footer() {
     },
   ];
 
-  return (
-    <footer className="w-full bg-white/10 backdrop-blur-md text-white py-6 sm:py-8 mt-auto">
+  return ( 
+    <footer className="bottom-0 left-0 z-0 w-full bg-white/10 backdrop-blur-md text-white py-6 sm:py-8 mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
           {/* Logo and Heading */}
