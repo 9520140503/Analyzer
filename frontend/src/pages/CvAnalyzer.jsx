@@ -1,5 +1,7 @@
 import React, { useRef, useState } from 'react'
 import FileImage from "../components/FileImage"
+import CvInfo from '../components/CvInfo';
+import Loader2 from '../components/Loader2';
 
 function CvAnalyzer() {
   const [loader,setLoader] = useState(false);
@@ -28,6 +30,7 @@ function CvAnalyzer() {
       }
 
       const data = await response.json();
+      console.log(data);
       setResultData(data);
 
       fileInputRef.current.value = null;
@@ -44,7 +47,7 @@ function CvAnalyzer() {
 
   const handleChange = (e) => {
     setselectedFile(e.target.files[0]);
-    console.log(fileInputRef.current.files[0]);
+    // console.log(fileInputRef.current.files[0]);
   }
   return (
     <div className='flex-wrap sm:flex-nowrap  flex gap-4 w-full p-6'>
@@ -57,6 +60,9 @@ function CvAnalyzer() {
             <h2 className="text-center mt-6 text-gray-400 text-md md:text-xl lg:text-2xl">
               Drag Or Upload File
             </h2>
+            {!selectedFile && <p className="text-center mt-6 text-red-400 text-xs md:text-md lg:text-lg">
+            Accept Only Docx And Pdf File.
+            </p>}
 
             <form 
             onSubmit={handleSubmit}
@@ -89,14 +95,17 @@ function CvAnalyzer() {
                 Get Result
               </button>
             </form>
+            {error && <p className='text-center text-red-400'>{error}</p>}
           </div>
         </div>
 
-        <div className="right w-full sm:w-2/3 border-2 border-blue-300 rounded-md h-[calc(100vh-5rem)]">
-            {resultData ? 
-            <p>{resultData.score}</p>
-            :
-            <p>Nothing to Show</p>}
+        <div className="text-white flex flex-col justify-center items-center right w-full sm:w-2/3 border-2 border-blue-300 rounded-md h-[calc(100vh-5rem)]">
+            {loader ? 
+              <Loader2/> :
+              (resultData ? 
+                <CvInfo cvInfo={resultData}/>
+              :
+              <p className='text-emerald-400 text-md  md:text-3xl text-center '>Upload your resume to get results</p>)}
         </div>
     </div>
   )
