@@ -99,7 +99,7 @@ function CvAnalyzer() {
           </div>
         </div>
 
-        <div className="text-white flex flex-col justify-center items-center right w-full sm:w-2/3 border-2 border-blue-300 rounded-md h-[calc(100vh-5rem)]">
+        <div id='rightCvPart' className="text-white flex flex-col justify-center items-center right w-full sm:w-2/3 border-2 border-blue-300 rounded-md h-[calc(100vh-5rem)]">
             {loader ? 
               <Loader2/> :
               (resultData ? 

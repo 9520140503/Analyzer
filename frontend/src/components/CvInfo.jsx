@@ -27,7 +27,7 @@ function CvInfo({cvInfo={}}) {
   }
   
   return (
-    <div className='p-8 overflow-y-auto relative'>
+    <div id='cvInfoPart' className='p-8 overflow-y-auto relative'>
         <h2 className=' text-center text-blue-300 text-md sm:text-xl md:text-2xl mb-4 font-bold'>Your Final Result</h2>
         <div className='border-dashed border-2 p-2 rounded'>
             <div className='flex justify-center items-center'>

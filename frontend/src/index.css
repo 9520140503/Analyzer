@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-body::-webkit-scrollbar{
+body::-webkit-scrollbar,#rightCvPart::-webkit-scrollbar,#cvInfoPart::-webkit-scrollbar{
   display: none;
 }
 
