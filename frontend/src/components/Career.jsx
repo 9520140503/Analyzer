@@ -1,90 +1,7 @@
 import { Timer, User } from 'lucide-react'
-import React, { useEffect, useState } from 'react'
-import ReactFlow, { Background, Controls, MiniMap, Handle } from "reactflow"
-import "reactflow/dist/style.css"
 
-function PhaseNode({data}){
-    const {emojiTag, phase, duration, skills, milestones, resources} = data;
-    return <div className='bg-gray-900 text-white rounded-xl p-3 shadow-md w-80 border-2 border-purple-300'>
-        <h3 className='text-purple-300 font-bold'>
-            {emojiTag} {phase}
-        </h3>
-        
-        <p className="text-md text-blue-300">⏳ {duration}</p>
-
-        <div className='mt-5'>
-            <p className='font-bold text-red-400'>Skills</p>
-            <ul className='list-disc list-inside text-sm'>
-                {skills.map((s,i) => (
-                    <li 
-                    className='text-green-300'
-                    key={i}>{s}</li>
-                ))}
-            </ul>
-        </div>
-
-        <div className='mt-5'>
-             <p className='font-bold text-yellow-400'>Milestones</p>
-            <ul className='list-disc list-inside text-sm'>
-                {milestones.map((m,i) => (
-                    <li 
-                    className='text-blue-500'
-                    key={i}>{m}</li>
-                ))}
-            </ul>
-        </div>
-
-        <div className='mt-5'>
-             <p className='font-bold text-purple-400'>Resources</p>
-            <ul className='list-disc list-inside text-xs'>
-                {resources.map((r,i) => (
-                    <li 
-                    className='text-blue-500'
-                    key={i}>
-                        <a 
-                        href={r.link}
-                        target='_blank'
-                        rel="noopener noreferrer"
-                        className='text-pink-400 underline text-xs font-bold'>
-                            {r.name}
-                        </a>{" "}
-                        {r.type}
-                    </li>
-                ))}
-            </ul>
-
-            <Handle type='target' position='top'/>
-            <Handle type='source' position='bottom'/>
-        </div>
-    </div>
-}
 
 function Career({ careerData = {} }) {
-  const [nodes, setNodes] = useState([]);
-  const [edges, setEdges] = useState([]);
-
-  const phases = careerData?.response?.phases || [];
-
-  useEffect(() => {
-    if (phases.length > 0) {
-      const generateNodes = phases.map((p, i) => ({
-        id: `${i + 1}`,
-        type:"phaseNode",
-        position: { x: i * 350, y: 100 },
-        data: p,
-      }));
-
-      const generateEdges = phases.slice(1).map((_, i) => ({
-        id: `e${i + 1}-${i + 2}`,
-        source: `${i + 1}`,
-        target: `${i + 2}`,
-        animated: true,
-      }));
-
-      setNodes(generateNodes);
-      setEdges(generateEdges);
-    }
-  }, [phases]);
 
   return (
     <div className="h-full">
@@ -101,17 +18,62 @@ function Career({ careerData = {} }) {
             </h2>
           </div>
 
-          {/* React Flow Section */}
-          <div className="w-full mt-5 border-2 border-dashed p-2 h-[600px]">
-            <ReactFlow 
-            nodes={nodes} 
-            edges={edges} 
-            fitView
-            nodeTypes={{phaseNode:PhaseNode}}>
-              {/* <MiniMap /> */}
-              <Controls />
-              <Background color="#aaa" gap={20} />
-            </ReactFlow>
+          <div className="w-full mt-10 flex justify-center items-center p-5">
+            <ul className='grid justify-center grid-cols-1 gap-8 sm:grid-cols-2 overflow-auto mx-auto'>
+                {careerData?.response?.phases?.map((phase,i) => (
+                  <li 
+                  key={i}
+                  className='bg-gray-900 text-white rounded-xl p-3 shadow-md w-80 h-120 border-2 border-purple-300 mr-5'>
+                    <h3 className='text-purple-300 font-bold'>
+                      {phase.emojiTag} {phase.phase}
+                    </h3>
+                     <p className="text-md text-blue-300">⏳ {phase.duration}</p>
+
+                    <div className='mt-5'>
+                        <p className='font-bold text-red-400'>Skills</p>
+                        <ul className='list-disc list-inside text-sm'>
+                            {phase?.skills?.map((s,i) => (
+                                <li 
+                                className='text-green-300'
+                                key={i}>{s}</li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div className='mt-5'>
+                      <p className='font-bold text-yellow-400'>Milestones</p>
+                      <ul className='list-disc list-inside text-sm'>
+                          {phase?.milestones?.map((m,i) => (
+                              <li 
+                              className='text-blue-500'
+                              key={i}>{m}</li>
+                          ))}
+                      </ul>
+                  </div>
+
+              <div className='mt-5'>
+                  <p className='font-bold text-purple-400'>Resources</p>
+                  <ul className='list-disc list-inside text-xs'>
+                      {phase?.resources?.map((r,i) => (
+                          <li 
+                          className='text-blue-500'
+                          key={i}>
+                              <a 
+                              href={r.link}
+                              target='_blank'
+                              rel="noopener noreferrer"
+                              className='text-pink-400 underline text-xs font-bold'>
+                                  {r.name}
+                              </a>{" "}
+                              {r.type}
+                          </li>
+                      ))}
+                  </ul>
+
+                </div>
+                  </li>
+              ))}
+            </ul>
           </div>
         </div>
       ) : (
