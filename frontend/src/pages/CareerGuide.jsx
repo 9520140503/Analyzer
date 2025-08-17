@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import roadmap from '../assets/roadmap-removebg-preview.png';
 import Loader2 from '../components/Loader2';
+import Career from '../components/Career';
 
 function CareerGuide() {
   const [jobRole, setJobRole] = useState('');
@@ -103,7 +104,7 @@ function CareerGuide() {
       >
         {loader ?
           <Loader2/>:
-          <p>{data?.response?.jobRole}</p>
+          <Career careerData={data}/>
         }
       </div>
     </div>
