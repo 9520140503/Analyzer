@@ -51,11 +51,11 @@ function CvAnalyzer() {
   }
   return (
     <div className='flex-wrap sm:flex-nowrap  flex gap-4 w-full p-6'>
-        <div className="flex flex-col items-center justify-center w-full sm:w-3/4 md:w-2/4 lg:w-2/5 border-2 border-blue-300 rounded-md md:h-[calc(100vh-5rem)] p-4">
+        <div id='lftCvPart' className="flex flex-col items-center justify-center w-full sm:w-3/4 md:w-2/4 lg:w-2/5 border-2 border-blue-300 rounded-md md:h-[calc(100vh-5rem)] p-4 overflow-auto">
           <h2 className="font-bold text-emerald-400 text-center text-lg sm:text-xl md:text-3xl">
             Upload Your Resume
           </h2>
-          <div className="bg-gray-900 text-white border-2 border-dashed rounded-lg p-4 mt-5 w-full h-auto md:h-[calc(100%-4rem)]">
+          <div id='leftCvPart' className="bg-gray-900 text-white border-2 border-dashed rounded-lg p-4 mt-5 w-full h-auto md:h-[calc(100%-4rem)] overflow-auto">
             <FileImage className="mx-auto" />
             <h2 className="text-center mt-6 text-gray-400 text-md md:text-xl lg:text-2xl">
               Drag Or Upload File

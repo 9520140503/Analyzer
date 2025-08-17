@@ -1,17 +1,45 @@
 import React, { useState } from 'react'
 import Loader3 from '../components/LoaderRobo';
 import { TypeAnimation } from 'react-type-animation';
-
+import Interview from '../components/Interview';
+import Loader2 from '../components/Loader2'
 function InterviewGuide() {
   const [prompt, setPrompt] = useState('');
+  const [loader,setLoader] = useState(false);
+  const [error, setError] = useState('');
+  const [data,setData] = useState({});
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoader(true);
+    try {
+      const response = await fetch('http://localhost:3000/ai/interview-guide',{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({prompt})
+      });
+
+      if(!response.ok) {
+        throw new Error(`Error: ${response.status}`)
+      }
+
+      const data = await response.json();
+      setData(data);
+      setError('');
+    } catch (error) {
+      setError(error.message);
+    } finally{
+      setPrompt('');
+      setLoader(false);
+    }
   };
 
   return (
     <div className="flex flex-col md:flex-row gap-6 w-full p-4 sm:p-6 bg-gradient-to-br from-gray-900 via-black to-gray-800 min-h-screen">
       {/* Left Section */}
-      <div className="flex flex-col w-full lg:w-2/5 border border-green-400 rounded-2xl shadow-lg shadow-green-900/50 p-4 md:p-6 bg-gray-950/60 backdrop-blur-md">
+      <div id="leftInterviewPart" className="flex flex-col w-full lg:w-2/5 border border-green-400 rounded-2xl shadow-lg shadow-green-900/50 p-4 md:p-6 bg-gray-950/60 backdrop-blur-md md:h-[calc(100vh-4.5rem)] overflow-auto">
         <h2 className="text-2xl sm:text-2xl md:text-3xl text-green-300 text-center font-extrabold mb-4 tracking-wide drop-shadow-lg">
           Ace Your Interview
         </h2>
@@ -67,11 +95,13 @@ function InterviewGuide() {
 
       {/* Right Section */}
       <div
-        id="rightCvPart"
-        className="text-white flex flex-col justify-center items-center w-full lg:w-3/5 border border-green-400 rounded-2xl shadow-lg shadow-green-900/40 bg-gray-950/60 backdrop-blur-md p-4"
+        id="rightInterviewPart"
+        className="text-white flex flex-col  w-full lg:w-3/5 border border-green-400 rounded-2xl shadow-lg shadow-green-900/40 bg-gray-950/60 backdrop-blur-md p-4  h-[calc(100vh-4.5rem)] overflow-auto"
       >
-        {/* Future content goes here */}
-        <p className="text-gray-400 text-center">Your interview insights will appear here...</p>
+        {loader ? 
+          <Loader2/>:
+          <Interview interviewInfo={data}/>
+        }
       </div>
     </div>
   );

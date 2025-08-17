@@ -9,8 +9,11 @@
 }
 
 body::-webkit-scrollbar,
+#leftCvPart::-webkit-scrollbar,
 #rightCvPart::-webkit-scrollbar,
-#cvInfoPart::-webkit-scrollbar,#textArea::-webkit-scrollbar{
+#cvInfoPart::-webkit-scrollbar,#textArea::-webkit-scrollbar,
+#leftInterviewPart::-webkit-scrollbar,
+#rightInterviewPart::-webkit-scrollbar{
   display: none;
 }
 
