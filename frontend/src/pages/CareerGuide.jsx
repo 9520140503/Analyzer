@@ -43,7 +43,7 @@ function CareerGuide() {
       <div
         id="leftInterviewPart"
         className="flex flex-col w-full lg:w-2/5 border border-purple-400 rounded-2xl shadow-lg shadow-green-900/50 
-        p-3 sm:p-4 md:p-6 bg-gray-950/60 backdrop-blur-md h-fit overflow-auto"
+        p-3 sm:p-4 md:p-6 bg-gray-950/60 backdrop-blur-md h-[calc(100vh-4rem)] overflow-auto"
       >
         <h2 className="font-bold text-purple-400 text-center text-base sm:text-lg md:text-xl lg:text-2xl flex items-center justify-center gap-x-2">
           <Map className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" color="white" />
@@ -51,7 +51,7 @@ function CareerGuide() {
         </h2>
 
         {/* Roadmap Image */}
-        <div className="border-2 border-dashed border-purple-400/50 animate-pulse flex justify-center mt-4 sm:mt-5">
+        <div className=" h-[calc(100%-40%)] border-2 border-dashed border-purple-400/50 animate-pulse flex justify-center items-center mt-4 sm:mt-5 py-5">
           <img
             src={roadmap}
             alt="roadmapImage"
@@ -62,7 +62,7 @@ function CareerGuide() {
         {/* Form */}
         <form 
         onSubmit={handleSubmit}
-        className="mt-4 sm:mt-6 text-white flex flex-col gap-3 sm:gap-4">
+        className=" h-[calc(100%-65%)] mt-4 sm:mt-6 text-white flex flex-col justify-center gap-3 sm:gap-4 p-5">
           <label className="text-xs sm:text-sm md:text-base font-semibold">
             You Want To Become:
             <TypeAnimation
@@ -98,7 +98,7 @@ function CareerGuide() {
       {/* Right Section */}
       <div
         id="rightInterviewPart"
-        className="text-white flex flex-col w-full lg:w-3/5 border border-purple-400 
+        className="bg-gray-900 text-white flex flex-col w-full lg:w-3/5 border border-purple-400 
         rounded-2xl shadow-lg shadow-green-900/40 bg-gray-950/60 backdrop-blur-md 
         p-3 sm:p-4 md:p-6 h-[calc(100vh-4rem)] overflow-auto"
       >

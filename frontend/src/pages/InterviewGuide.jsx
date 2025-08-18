@@ -39,12 +39,12 @@ function InterviewGuide() {
   return (
     <div className="flex flex-col md:flex-row gap-6 w-full p-4 sm:p-6 bg-gradient-to-br from-gray-900 via-black to-gray-800 min-h-screen">
       {/* Left Section */}
-      <div id="leftInterviewPart" className="flex flex-col w-full lg:w-2/5 border border-green-400 rounded-2xl shadow-lg shadow-green-900/50 p-4 md:p-6 bg-gray-950/60 backdrop-blur-md md:h-[calc(100vh-4.5rem)] overflow-auto">
+      <div id="leftInterviewPart" className=" flex flex-col w-full lg:w-2/5 border border-green-400 rounded-2xl shadow-lg shadow-green-900/50 p-4 md:p-6 bg-gray-950/60 backdrop-blur-md md:h-[calc(100vh-4.5rem)] overflow-auto">
         <h2 className="text-2xl sm:text-2xl md:text-3xl text-green-300 text-center font-extrabold mb-4 tracking-wide drop-shadow-lg">
           Ace Your Interview
         </h2>
         
-        <ul>
+        <ul className='h-[calc(100%-30%)] flex flex-col justify-center items-center'>
           <li className="bg-gray-900 rounded-xl text-center m-3 text-purple-300 px-3 py-2 border border-green-300 shadow-md hover:scale-105 hover:shadow-green-500/30 transition-transform duration-300">
             Ask any type of question to take your interview prep to the next level.
           </li>
@@ -73,7 +73,7 @@ function InterviewGuide() {
 
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col items-center justify-center gap-3 mt-4"
+          className=" h-[calc(100%-70%)] flex flex-col items-center justify-center gap-3 mt-4"
         >
           <textarea
             value={prompt}

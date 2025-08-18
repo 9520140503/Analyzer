@@ -55,18 +55,20 @@ function CvAnalyzer() {
           <h2 className="font-bold text-emerald-400 text-center text-lg sm:text-xl md:text-3xl">
             Upload Your Resume
           </h2>
-          <div id='leftCvPart' className="bg-gray-900 text-white border-2 border-dashed rounded-lg p-4 mt-5 w-full h-auto md:h-[calc(100%-4rem)] overflow-auto">
-            <FileImage className="mx-auto" />
-            <h2 className="text-center mt-6 text-gray-400 text-md md:text-xl lg:text-2xl">
-              Drag Or Upload File
-            </h2>
-            {!selectedFile && <p className="text-center mt-6 text-red-400 text-xs md:text-md lg:text-lg">
-            Accept Only Docx And Pdf File.
-            </p>}
+          <div id='leftCvPart' className="bg-gray-900 text-white border-2 border-dashed rounded-lg p-4 w-full md:h-[calc(100%-4rem)] overflow-auto">
+            <div className='h-[calc(100%-40%)] flex flex-col justify-center items-center'>
+              <FileImage className="mx-auto " />
+              <h2 className="text-center mt-6 text-gray-400 text-md md:text-xl lg:text-2xl">
+                Drag Or Upload File
+              </h2>
+              {!selectedFile && <p className="text-center mt-6 text-red-400 text-xs md:text-md lg:text-lg">
+              Accept Only Docx And Pdf File.
+              </p>}
+            </div>
 
             <form 
             onSubmit={handleSubmit}
-            className="mt-10 flex flex-col items-center">
+            className="mt-10 flex flex-col justify-center items-center h-[calc(100%-60%)] ">
               <input
                 type="file"
                 ref={fileInputRef}

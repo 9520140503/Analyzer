@@ -34,9 +34,9 @@ function CvInfo({cvInfo={}}) {
             <Medal size={25}/>
             <h2 className='text-center text-blue-400 font-bold text-md sm:text-md md:text-xl'>ATS SCORE</h2>
             </div>
-            <div className={`mx-auto w-fit bg-gray-950/30 border-4 border-${scoreColor} flex flex-col items-center justify-center m-5 p-10 rounded-full shadow-lg shadow-green-500`}>
-            <h3 className='text-lg md:text-2xl'>{cvInfo?.response?.score}%</h3>
-            <h3 className={`text-${scoreColor} text-lg md:text-2xl`}>{cvInfo?.response?.grade}</h3>
+            <div className={`mx-auto w-fit bg-gray-950 border-4 md:border-8 border-${scoreColor} flex flex-col items-center justify-center m-5 p-10 rounded-full shadow-lg shadow-green- animate-pulse transform hover:scale-110`}>
+                <h3 className='text-lg md:text-2xl'>{cvInfo?.response?.score}%</h3>
+                <h3 className={`text-${scoreColor} text-lg md:text-2xl`}>{cvInfo?.response?.grade}</h3>
             </div>
         </div>
         <div className='border-dashed border-2 p-2 rounded mt-8'>
