@@ -1,10 +1,11 @@
 import React from 'react'
-import { motion } from 'framer-motion'
-import heroman from "../assets/heroman.png"
+import { motion } from 'framer-motion';
+import heroman from "../assets/heroman.png";
 import { TypeAnimation } from "react-type-animation";
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
-import { Medal } from "lucide-react"
+import { Award, Medal } from "lucide-react";
+import successVideo from "../assets/successVideo.mp4"
 
 const Home = () => {
   const authStatus = useSelector((state) => state.auth.status)
@@ -15,6 +16,13 @@ const Home = () => {
     "Discover strengths and highlights of your resume",
     "Access roadmaps for specific technology fields",
     "Prepare for interviews with AI-driven guidance"
+  ];
+
+  const goods = [
+    "Know your resume score with suggestions and insights",
+    "Get you tech roadmap based on your skills",
+    "Prepare for interviews with AI-driven guidance",
+    "Enhance your overall career prospects",
   ];
 
   // Animation variants for staggered entrance
@@ -83,7 +91,8 @@ const Home = () => {
           className="lg:w-1/2 flex justify-center"
           variants={itemVariants}
         >
-          <img
+          <motion.img
+            whileHover={{ scale: 1.5, x:"20%" }}
             src={heroman}
             className="w-48 sm:w-64 md:w-80 lg:w-96 object-contain"
             alt="CareerParto Hero"
@@ -91,9 +100,21 @@ const Home = () => {
         </motion.div>
       </motion.div>
 
+      {/* Success Video Section */}
+      <motion.div
+      variants={containerVariants}
+      className='flex justify-center mt-16 md:mt-24 px-4 sm:px-6'>
+        <motion.video
+        src={successVideo}
+        className='w-1/2 object-contain rounded-xl'
+        autoPlay loop muted
+        variants={itemVariants}
+        />
+      </motion.div>
+
       {/* About Section */}
       <motion.div
-        className="max-w-4xl mx-auto mt-16 md:mt-20 px-4 sm:px-6 py-4 text-center border-2 border-dashed rounded-md"
+        className="max-w-4xl mx-auto mt-16 md:mt-20 px-4 sm:px-6 py-4 text-center border-2 border-dashed rounded-md bg-gray-950"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -114,8 +135,14 @@ const Home = () => {
       </motion.div>
 
       {/* Features Section */}
+      <motion.h2
+        className="text-3xl md:text-4xl font-bold text-white mb-2 mt-28 text-center"
+        variants={itemVariants}
+      >
+        Key Features
+      </motion.h2>
       <motion.div
-        className="max-w-6xl mx-auto mt-16 md:mt-20 px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        className="max-w-6xl mx-auto mt-5 md:mt-20 px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -124,7 +151,7 @@ const Home = () => {
         {features.map((feature, index) => (
           <motion.div
             key={index}
-            className="relative bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-lg p-6 border border-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300 flex items-center justify-center"
+            className="relative bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-lg p-6 border border-purple-500/20 hover:border-purple-500/50 transition-all duration-300 flex items-center justify-center"
             variants={itemVariants}
             whileHover={{ scale: 1.03 }}
           >
@@ -136,6 +163,38 @@ const Home = () => {
           </motion.div>
         ))}
       </motion.div>
+
+
+      {/* Good Things To Know */}
+      <motion.h2
+        className="text-3xl md:text-4xl font-bold text-white mb-2 mt-28 text-center"
+        variants={itemVariants}
+      >
+        Good Things To Know
+      </motion.h2>
+      <motion.div
+        className="max-w-6xl mx-auto mt-5 md:mt-20 px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+      >
+        {goods.map((good, index) => (
+          <motion.div
+            key={index}
+            className="relative bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-lg p-6 border border-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300 flex items-center justify-center"
+            variants={itemVariants}
+            whileHover={{ scale: 1.03 }}
+          >
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-cyan-500 text-gray-900 text-xs font-semibold px-2 py-1 rounded-full">
+              {index + 1}
+            </div>
+            <Award size={28} color='green'/>
+            <p className="text-gray-200 text-base md:text-lg font-medium text-center">{good}</p>
+          </motion.div>
+        ))}
+      </motion.div>
+
 
       {/* Call to Action Section */}
       <motion.div
