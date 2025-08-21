@@ -5,9 +5,9 @@ import {motion} from "framer-motion";
 
 function Avatar({userData={}}) {
  return (
-  <div className="border-2 bg-white flex justify-center rounded-xl ml-2">
+  <div className="border-2 bg-blue-500 flex justify-center rounded-xl ml-2">
     <Link 
-      to="/view-profile" 
+      to="/view-profile" state={{userData}} 
       className="flex items-center justify-center p-1 rounded-md"
     >
       <motion.img
