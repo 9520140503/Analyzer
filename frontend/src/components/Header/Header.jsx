@@ -4,15 +4,12 @@ import { NavLink } from 'react-router-dom';
 import mainImage from "../../assets/guideIcon.png";
 import { Menu, X } from "lucide-react";
 import Avatar from './Avatar';
-import { setErrorMap } from 'zod/v3';
 
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
   const [isMobile, setIsMobile] = useState(false);
   const [userData, setUserData] = useState({});
   const [error,setError] = useState('');
-
- const token = localStorage.getItem('token');
 
   const navItems = [
     { name: "Home", path: "/", status: true },
@@ -22,11 +19,16 @@ function Header() {
     { name: "Career Guide", path: "/career-guide", status: authStatus },
     { name: "Interview Guide", path: "/interview-guide", status: authStatus }
   ];
+  
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
+
+    if(!token) return;
+
     const fetchInfo = async() => {
       try {
-        const resposnse = await fetch('http://localhost:3000/user/get-profile',{
+        const response = await fetch('http://localhost:3000/user/get-profile',{
           method:"GET",
           headers:{
             "Content-Type":"application/json",
@@ -34,20 +36,21 @@ function Header() {
           }
         });
 
-        if(!resposnse.ok){
-          throw new Error("Error",error);
+        if(!response.ok){
+          throw new Error("Error fetching user data");
         }
 
-        const data = await resposnse.json();
-
+        const data = await response.json();
+        // console.log("User Data:",data);
         setUserData(data);
 
       } catch (error) {
+        console.log(error.message);
         setError(error.message)
       }
     }
     fetchInfo();
-  })
+  },[token])
 
   return (
     <div className="w-full mx-auto mb-10  sticky top-0 left-0 z-50 shadow-lg shadow-white  backdrop-blur-md text-white px-4 md:px-8 py-3 flex items-center justify-between">
@@ -91,7 +94,7 @@ function Header() {
 
       {/* Mobile Navigation */}
       {isMobile && (
-        <nav className="absolute top-full left-0 w-full bg-white/10 backdrop-blur-lg shadow-md md:hidden">
+        <nav className="absolute top-full left-0 w-full bg-gray-950 backdrop-blur-lg shadow-md md:hidden">
           <ul className="grid grid-cols-2 text-center">
             {navItems.map(
               (navItem) =>
@@ -109,6 +112,9 @@ function Header() {
                   </li>
                 )
             )}
+
+            {authStatus &&
+            <li className='w-fit mx-auto'><Avatar userInfo={userData}/></li>}
           </ul>
         </nav>
       )}

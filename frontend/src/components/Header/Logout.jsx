@@ -30,7 +30,7 @@ function Logout() {
   }
   return (
     <button 
-    className='bg-white text-black p-1'
+    className=' text-white rounded-lg hover:bg-blue-500  duration-500'
     onClick={handleLogout}>
         Logout
     </button>
