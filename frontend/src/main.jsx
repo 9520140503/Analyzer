@@ -5,8 +5,8 @@ import './index.css';
 import App from './App.jsx';
 import { store } from './store/store.js';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import AuthLayout from './components/AuthLayout.jsx';
-import {CareerGuide, CvAnalyzer, Home, InterviewGuide, Login, Signup} from "../src/pages/index.js"
+import AuthLayout from './components/AuthLayout.jsx';;
+import {CareerGuide, CvAnalyzer, Home, InterviewGuide, Login, Signup,ViewProfile} from "../src/pages/index.js"
 
 const router = createBrowserRouter([
   {
@@ -45,6 +45,12 @@ const router = createBrowserRouter([
         path:'/interview-guide',
         element:<AuthLayout authentication={true}>
           <InterviewGuide/>
+        </AuthLayout>
+      },
+      {
+        path:'/view-profile',
+        element:<AuthLayout authentication={true}>
+          <ViewProfile/>
         </AuthLayout>
       }
     ]

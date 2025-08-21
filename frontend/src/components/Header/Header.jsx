@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
 import { NavLink } from 'react-router-dom';
 import mainImage from "../../assets/guideIcon.png";
 import { Menu, X } from "lucide-react";
-import Logout from './Logout';
+import Avatar from './Avatar';
+import { setErrorMap } from 'zod/v3';
 
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
   const [isMobile, setIsMobile] = useState(false);
+  const [userData, setUserData] = useState({});
+  const [error,setError] = useState('');
+
+ const token = localStorage.getItem('token');
 
   const navItems = [
     { name: "Home", path: "/", status: true },
@@ -17,6 +22,32 @@ function Header() {
     { name: "Career Guide", path: "/career-guide", status: authStatus },
     { name: "Interview Guide", path: "/interview-guide", status: authStatus }
   ];
+
+  useEffect(() => {
+    const fetchInfo = async() => {
+      try {
+        const resposnse = await fetch('http://localhost:3000/user/get-profile',{
+          method:"GET",
+          headers:{
+            "Content-Type":"application/json",
+            "Authorization":`Bearer ${token}`
+          }
+        });
+
+        if(!resposnse.ok){
+          throw new Error("Error",error);
+        }
+
+        const data = await resposnse.json();
+
+        setUserData(data);
+
+      } catch (error) {
+        setError(error.message)
+      }
+    }
+    fetchInfo();
+  })
 
   return (
     <div className="w-full mx-auto mb-10  sticky top-0 left-0 z-50 shadow-lg shadow-white  backdrop-blur-md text-white px-4 md:px-8 py-3 flex items-center justify-between">
@@ -33,7 +64,7 @@ function Header() {
         {navItems.map(
           (navItem) =>
             navItem.status && (
-              <li key={navItem.path} className='text-xs md:text-sm lg:text-md'>
+              <li key={navItem.path} className='text-xs lg:text-md'>
                 <NavLink
                   to={navItem.path}
                   className={({ isActive }) =>
@@ -47,7 +78,7 @@ function Header() {
         )}
 
         {authStatus &&
-            <li><Logout/></li>}
+            <li><Avatar userInfo={userData}/></li>}
       </ul>
 
       {/* Mobile Menu Button */}
