@@ -47,9 +47,9 @@ function App() {
 
   
   return (
-    <div className='bg-gray-800'>
+    <div className='bg-gradient-to-tr from-indigo-900 via-gray-900 to-black'>
       <Header/>
-      <main className='min-h-screen bg-gray-800'>
+      <main className='min-h-screen bg-gradient-to-tr from-indigo-900 via-gray-900 to-black'>
         {loader?<Loader/>:<Outlet/>}
       </main>
       <Footer/>

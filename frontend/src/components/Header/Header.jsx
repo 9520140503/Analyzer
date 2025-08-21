@@ -19,7 +19,7 @@ function Header() {
   ];
 
   return (
-    <div className="w-full sticky top-0 left-0 z-50 border-4 border-blue-500 shadow-lg shadow-white bg-white/10 backdrop-blur-md text-white px-4 py-3 flex items-center justify-between">
+    <div className="w-full mx-auto mb-10  sticky top-0 left-0 z-50 shadow-lg shadow-white  backdrop-blur-md text-white px-4 md:px-8 py-3 flex items-center justify-between">
       {/* Logo */}
       <div className="flex items-center gap-2">
         <img src={mainImage} alt="" className="w-7 h-6 md:h-8 md:w-9" />
@@ -29,11 +29,11 @@ function Header() {
       </div>
 
       {/* Desktop Navigation */}
-      <ul className="hidden sm:flex items-center sm:gap-x-6 lg:gap-x-12 px-4 md:px-12 lg:px-16 font-semibold">
+      <ul className="hidden md:flex items-center sm:gap-x-6 lg:gap-x-12 px-4 md:px-12 lg:px-16 font-semibold">
         {navItems.map(
           (navItem) =>
             navItem.status && (
-              <li key={navItem.path} className='text-xs md:text-sm lg:text-lg'>
+              <li key={navItem.path} className='text-xs md:text-sm lg:text-md'>
                 <NavLink
                   to={navItem.path}
                   className={({ isActive }) =>
@@ -52,7 +52,7 @@ function Header() {
 
       {/* Mobile Menu Button */}
       <button
-        className="sm:hidden p-2"
+        className="md:hidden p-2"
         onClick={() => setIsMobile((prev) => !prev)}
       >
         {isMobile ? <X size={24} /> : <Menu size={24} />}
@@ -60,7 +60,7 @@ function Header() {
 
       {/* Mobile Navigation */}
       {isMobile && (
-        <nav className="absolute top-full left-0 w-full bg-white/10 backdrop-blur-lg shadow-md sm:hidden">
+        <nav className="absolute top-full left-0 w-full bg-white/10 backdrop-blur-lg shadow-md md:hidden">
           <ul className="grid grid-cols-2 text-center">
             {navItems.map(
               (navItem) =>

@@ -114,7 +114,7 @@ const Home = () => {
 
       {/* About Section */}
       <motion.div
-        className="max-w-4xl mx-auto mt-16 md:mt-20 px-4 sm:px-6 py-4 text-center border-2 border-dashed rounded-md bg-gray-950"
+        className="max-w-4xl mx-auto mt-16 md:mt-20 px-4 sm:px-6 py-4 text-center border-2 border-dashed border-purple-400 rounded-md bg-gray-950"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
