@@ -84,6 +84,8 @@ function InterviewGuide() {
             className="w-full bg-gray-900/80 text-white placeholder:text-gray-300 px-3 py-2 rounded-lg border border-gray-700 focus:ring-2 focus:ring-blue-500 outline-none resize-none shadow-md"
           ></textarea>
 
+          {error && <p className='text-center text-red-300'>{error}</p>}
+
           <button
             type="submit"
             className="bg-gradient-to-r from-blue-400 to-emerald-400 mt-2 w-full p-2 rounded-xl font-semibold text-gray-900 hover:from-emerald-400 hover:to-blue-400 shadow-md shadow-emerald-700/30 transition-all duration-300"

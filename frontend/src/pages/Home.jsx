@@ -11,11 +11,26 @@ const Home = () => {
   const authStatus = useSelector((state) => state.auth.status)
 
   const features = [
-    "Analyze your resume score with detailed insights",
-    "Get personalized suggestions to improve weak areas",
-    "Discover strengths and highlights of your resume",
-    "Access roadmaps for specific technology fields",
-    "Prepare for interviews with AI-driven guidance"
+    {
+      line:"Analyze your resume score with detailed insights",
+      imageLink:"https://t4.ftcdn.net/jpg/03/31/03/79/240_F_331037954_pYKEEpEI3ThPUgzQJmrl1V69lawrbruG.jpg"
+    },
+    {
+      line:"Get personalized suggestions to improve weak areas",
+      imageLink:"https://images.pexels.com/photos/5697261/pexels-photo-5697261.jpeg"
+    },
+    {
+      line:"Discover strengths and highlights of your resume",
+      imageLink:"https://cdn.vectorstock.com/i/500p/67/68/strength-vs-weakness-signpost-vector-15176768.avif"
+    },
+    {
+      line:"Access roadmaps for specific technology fields",
+      imageLink:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJeQ3w9DbcS5fGqXJS9r50VqcfkisqNv6JAg&s"
+    },
+    {
+      line:"Prepare for interviews with AI-driven guidance",
+      imageLink:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg1Ke8bqCHlUstmNfa0aijrKB7gwE0RNAH9fMhrCv-RgYWZEmEeWhkwmYCnmMhgS8T6wI&usqp=CAU"
+    },
   ];
 
   const goods = [
@@ -151,15 +166,17 @@ const Home = () => {
         {features.map((feature, index) => (
           <motion.div
             key={index}
-            className="relative bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-lg p-6 border border-purple-500/20 hover:border-purple-500/50 transition-all duration-300 flex items-center justify-center"
+            className="relative bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-lg p-6 border border-purple-500/20 hover:border-purple-500/50 transition-all duration-300"
             variants={itemVariants}
             whileHover={{ scale: 1.03 }}
           >
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-cyan-500 text-gray-900 text-xs font-semibold px-2 py-1 rounded-full">
               {index + 1}
             </div>
-            <Medal size={28} color='yellow'/>
-            <p className="text-gray-200 text-base md:text-lg font-medium text-center">{feature}</p>
+            <p className="text-gray-200 text-base md:text-lg font-medium text-center flex items-center"> <Medal size={28} color='yellow'/>{feature.line}</p>
+            <img 
+            className='w-full h-40 object-cover mt-2 rounded-md'
+            src={feature.imageLink} alt="" />
           </motion.div>
         ))}
       </motion.div>
@@ -182,14 +199,14 @@ const Home = () => {
         {goods.map((good, index) => (
           <motion.div
             key={index}
-            className="relative bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-lg p-6 border border-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300 flex items-center justify-center"
+            className="relative bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-lg  border border-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300 flex items-center justify-center p-8"
             variants={itemVariants}
             whileHover={{ scale: 1.03 }}
           >
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-cyan-500 text-gray-900 text-xs font-semibold px-2 py-1 rounded-full">
               {index + 1}
             </div>
-            <Award size={28} color='green'/>
+            <Award size={25} color='lightgreen'/>
             <p className="text-gray-200 text-base md:text-lg font-medium text-center">{good}</p>
           </motion.div>
         ))}

@@ -9,6 +9,7 @@ const InfoDiv = ({info, icon}) => {
     return (
          <motion.div 
          variants={itemVariants}
+          whileHover={{ scale: 1.05}}
          className='flex flex-col items-start justify-center p-4 bg-gray-300/20 rounded-md hover:border-2 hover:border-pink-300 duration-200 mt-4'>
             <motion.h2
             className='flex items-center gap-x-2 text-sm sm:text-md md:text-lg'
@@ -44,7 +45,8 @@ const ViewProfile = () => {
     <motion.div
     variants={containerVariants}
     whileHover={{ scale: 1.05}}
-    className='w-full max-w-sm md:max-w-md m-16 p-5 rounded-lg border-4 border-yellow-500 text-white bg-gray-950 mx-auto hover:shadow-lg hover:shadow-white'>
+    transition={{duration:2,ease: "easeInOut"}}
+    className='w-full max-w-sm md:max-w-md m-16 p-5 rounded-lg border-4 border-pink-500 text-white bg-gray-950 mx-auto hover:shadow-lg hover:shadow-white'>
          <h1 className=' text-lg sm:text-xl md:text-2xl text-emerald-300 font-bold flex items-center justify-center gap-x-2'><User2 color='lightGreen'/>Profile</h1>
          <motion.div 
          variants={itemVariants}
@@ -62,7 +64,7 @@ const ViewProfile = () => {
 
          <motion.div
          variants={itemVariants}
-          className='w-full flex items-center justify-around gap-x-4 mt-4'>
+          className='w-full flex items-center justify-around gap-x-4 mt-4 bg-gray-300/20 p-2 rounded-md hover:border-white hover:border-2'>
             <Link to='/edit-profile' state={{userInfo}} className='flex items-center gap-x-2 text-sm sm:text-md md:text-lg bg-emerald-500 hover:bg-emerald-600 duration-500 p-2 rounded-lg'>
                <Pencil size={20}/> Edit Profile
             </Link>
@@ -70,6 +72,7 @@ const ViewProfile = () => {
               <Power size={20}/><Logout/>
             </Link>
          </motion.div>
+         <p className='text-center text-gray-300/50 font-extrabold mt-4'>@CareerParto</p>
     </motion.div>
   )
 }

@@ -84,11 +84,13 @@ function CareerGuide() {
             outline-none shadow-md text-xs sm:text-sm md:text-base"
           />
 
+          {error && <p className='text-center text-red-300'>{error}</p>}
+
           <button
             type="submit"
             disabled={!jobRole}
             className={`${jobRole ? "bg-blue-500 hover:bg-emerald-400":"bg-gray-500"} transition-all duration-300 
-            mt-2 sm:mt-3 w-full sm:w-3/4 md:w-2/3 mx-auto p-2 sm:p-3 rounded-lg font-semibold text-xs sm:text-sm md:text-base`}
+            mt-2 sm:mt-3 w-full mx-auto p-2 sm:p-3 rounded-lg font-semibold text-xs sm:text-sm md:text-base`}
           >
             Get Roadmap
           </button>

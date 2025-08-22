@@ -56,18 +56,21 @@ function EditProfile() {
         if(response.ok) {
             alert("Data Updated Successfully");
             setTimeout(() => {
-                navigate('/');
+                navigate('/view-profile',{
+                    state: {userInfo}
+                });
             },1000)
         }
 
         setError('');
     } catch (error) {
-        setError(error);
+        setError(error.message || "Something went wrong");;
     }
     finally{
         setLoader(false);
     }
   }
+  
 
   const handleChange = (e) => {
     const {name,value} = e.target;
@@ -79,15 +82,14 @@ function EditProfile() {
   return (
     <motion.div 
     whileHover={{ scale: 1.05 }}
-    animate={{rotateY:360}}
     transition={{
         duration:2,
         ease: "easeInOut"
     }}
-    style={{perspective:1000}}
+  
     className='w-full max-w-sm md:max-w-lg m-16 mt-24 p-2 rounded-lg border-4 border-purple-300 text-white bg-gray-950 mx-auto hover:shadow-lg hover:shadow-green-300'>
         <h1 className='text-2xl font-bold mt-2 text-purple-300 flex  justify-center items-center gap-x-2'><Pencil/>Edit Profile</h1>
-        <form onSubmit={handleSubmit} className='flex flex-col items-start justify-center p-5 w-full'>
+        <form onSubmit={handleSubmit} className='flex flex-col items-start justify-center p-5 w-full bg-white/10 backdrop-blur-sm rounded-lg mt-2 border-2 border-white'>
            
            <Input label="Image" type='text' name="image" value={updateData?.image} placeholder="Enter Image Link" icon={<Image size={22} color='yellow' />} handleChange={handleChange}/>
            
@@ -97,8 +99,11 @@ function EditProfile() {
     
            <Input label="Mobile" type='tel' name="mobile" value={updateData?.mobile} placeholder="Enter Mobile Number" icon={<Phone size={22} color='lightGreen' />} handleChange={handleChange}/>
     
+            {error && <p className='text-center text-red-300'>{error}</p>}
+
             <button type='submit'
             className='flex gap-x-2 justify-center w-full bg-emerald-500 mt-4 py-2 rounded hover:bg-emerald-600'>{loader ? "Updating" : "Save"} <Save/></button>
+            {error && <p className='text-center w-full mt-2 text-rose-300'>{error}</p>}
         </form>
     </motion.div>
   )

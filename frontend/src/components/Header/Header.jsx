@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import mainImage from "../../assets/guideIcon.png";
 import { Menu, X } from "lucide-react";
 import Avatar from './Avatar';
@@ -57,17 +57,17 @@ function Header() {
       {/* Logo */}
       <div className="flex items-center gap-2">
         <img src={mainImage} alt="" className="w-7 h-6 md:h-8 md:w-9" />
-        <h1 className="text-xl sm:text-2xl md:text-4xl font-medium md:font-semibold">
+        <Link to={'/'} className="text-xl sm:text-2xl md:text-4xl font-medium md:font-semibold">
           CareerParto
-        </h1>
+        </Link>
       </div>
 
       {/* Desktop Navigation */}
-      <ul className="hidden md:flex items-center sm:gap-x-6 lg:gap-x-12 px-4 md:px-12 lg:px-16 font-semibold">
+      <ul className="hidden md:flex items-center sm:gap-x-4 lg:gap-x-12 px-4 md:px-12 lg:px-16 font-semibold">
         {navItems.map(
           (navItem) =>
             navItem.status && (
-              <li key={navItem.path} className='text-xs lg:text-md'>
+              <li key={navItem.path} className='text-xs lg:text-lg'>
                 <NavLink
                   to={navItem.path}
                   className={({ isActive }) =>
