@@ -4,7 +4,7 @@ import heroman from "../assets/heroman.png";
 import { TypeAnimation } from "react-type-animation";
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
-import { Award, Medal } from "lucide-react";
+import { Award, Medal, Trophy } from "lucide-react";
 import successVideo from "../assets/successVideo.mp4"
 
 const Home = () => {
@@ -199,14 +199,14 @@ const Home = () => {
         {goods.map((good, index) => (
           <motion.div
             key={index}
-            className="relative bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-lg  border border-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300 flex items-center justify-center p-8"
+            className="relative bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-lg  border border-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300 flex items-center justify-center p-8 "
             variants={itemVariants}
             whileHover={{ scale: 1.03 }}
           >
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-cyan-500 text-gray-900 text-xs font-semibold px-2 py-1 rounded-full">
               {index + 1}
             </div>
-            <Award size={25} color='lightgreen'/>
+            <Trophy size={24} color='lightgreen'/>
             <p className="text-gray-200 text-base md:text-lg font-medium text-center">{good}</p>
           </motion.div>
         ))}

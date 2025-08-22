@@ -44,7 +44,6 @@ const LoginForm = () => {
       if(response.ok){
         const {token} = data;
         localStorage.setItem('token',token);
-        toast.success("Login Successful")
         dispatch(login(data));
         setTimeout(() => {
           navigate('/')
