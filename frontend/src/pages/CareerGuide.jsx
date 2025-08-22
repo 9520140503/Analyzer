@@ -15,7 +15,7 @@ function CareerGuide() {
     e.preventDefault();
     setLoader(true);
     try {
-      const response = await fetch('http://localhost:3000/ai/career-guide',{
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_ENDPOINT}/ai/career-guide`,{
         method:"POST",
         headers:{
           "Content-Type":"application/json"

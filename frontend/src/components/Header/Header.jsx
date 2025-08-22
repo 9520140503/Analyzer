@@ -28,7 +28,7 @@ function Header() {
 
     const fetchInfo = async() => {
       try {
-        const response = await fetch('http://localhost:3000/user/get-profile',{
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_ENDPOINT}/user/get-profile`,{
           method:"GET",
           headers:{
             "Content-Type":"application/json",

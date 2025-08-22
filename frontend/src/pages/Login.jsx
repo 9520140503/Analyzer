@@ -30,8 +30,8 @@ const LoginForm = () => {
     e.preventDefault();
     setLoader(true);
     setError('');
-    try {
-      const response = await fetch('http://localhost:3000/user/login',{
+    try {VITE_BACKEND_ENDPOINT
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_ENDPOINT}/user/login`,{
         method:"POST",
         headers:{
           'Content-Type':"application/json"

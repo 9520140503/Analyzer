@@ -13,7 +13,7 @@ function InterviewGuide() {
     e.preventDefault();
     setLoader(true);
     try {
-      const response = await fetch('http://localhost:3000/ai/interview-guide',{
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_ENDPOINT}/ai/interview-guide`,{
         method:"POST",
         headers:{
           "Content-Type":"application/json"

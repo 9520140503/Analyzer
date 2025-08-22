@@ -20,7 +20,7 @@ function CvAnalyzer() {
       formData.append("resume",selectedFile);
       formData.append("description",jobDescription);
 
-      const response = await fetch('http://localhost:3000/ai/analyze',{
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_ENDPOINT}/ai/analyze`,{
         method:"POST",
         body: formData
       });
