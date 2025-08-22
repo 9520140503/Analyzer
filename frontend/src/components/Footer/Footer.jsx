@@ -20,17 +20,17 @@ function Footer() {
     {
       name: 'LinkedIn',
       icon: <Linkedin size={20} className="text-white hover:text-orange-300 transition-colors" />,
-      url: 'https://www.linkedin.com/company/yourcompany',
+      url: 'https://www.linkedin.com/in/vishesh-raj',
     },
     {
       name: 'Twitter',
       icon: <Twitter size={20} className="text-white hover:text-blue-300 transition-colors" />,
-      url: 'https://twitter.com/yourcompany',
+      url: 'https://x.com/visheshraj2344',
     },
     {
       name: 'GitHub',
       icon: <Github size={20} className="text-white hover:text-green-300 transition-colors" />,
-      url: 'https://github.com/yourcompany',
+      url: 'https://github.com/9520140503',
     },
   ];
 
