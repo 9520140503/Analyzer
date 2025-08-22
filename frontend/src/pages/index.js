@@ -3,8 +3,8 @@ import Login from "./Login";
 import Signup from "./Signup";
 import CvAnalyzer from "./CvAnalyzer";
 import CareerGuide from "./CareerGuide";
-ViewProfile
+import EditProfile from "./EditProfile";
 import InterviewGuide from "./InterviewGuide";
 import ViewProfile from "./ViewProfile";
 
-export {Home,Login,Signup,CvAnalyzer,CareerGuide,InterviewGuide,ViewProfile} 
+export {Home,Login,Signup,CvAnalyzer,CareerGuide,InterviewGuide,ViewProfile,EditProfile} 

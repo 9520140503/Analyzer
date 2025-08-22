@@ -63,7 +63,7 @@ const ViewProfile = () => {
          <motion.div
          variants={itemVariants}
           className='w-full flex items-center justify-around gap-x-4 mt-4'>
-            <Link to='/edit-profile' className='flex items-center gap-x-2 text-sm sm:text-md md:text-lg bg-emerald-500 hover:bg-emerald-600 duration-500 p-2 rounded-lg'>
+            <Link to='/edit-profile' state={{userInfo}} className='flex items-center gap-x-2 text-sm sm:text-md md:text-lg bg-emerald-500 hover:bg-emerald-600 duration-500 p-2 rounded-lg'>
                <Pencil size={20}/> Edit Profile
             </Link>
             <Link className='flex items-center gap-x-2 text-sm sm:text-md md:text-lg bg-blue-900 p-2 rounded-lg hover:bg-blue-500 duration-500'>

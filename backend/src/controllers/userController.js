@@ -69,14 +69,9 @@ export const login = async(req,res) => {
 
 export const updateProfile = async(req,res) => {
     const user = req.user;
-    const {image, fullname,email,password} = req.body;
+    const {image, fullname,email,mobile} = req.body;
     try {
-        const updateData = {fullname,email};
-
-        if(password && password.trim() !== ''){
-            const hashPassword = await bcrypt.hash(password,10);
-            updateData.password = hashPassword;
-        }
+        const updateData = {image, fullname,email, mobile};
 
         await User.findByIdAndUpdate(user._id,updateData);
 

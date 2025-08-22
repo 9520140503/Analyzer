@@ -6,7 +6,7 @@ import App from './App.jsx';
 import { store } from './store/store.js';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AuthLayout from './components/AuthLayout.jsx';;
-import {CareerGuide, CvAnalyzer, Home, InterviewGuide, Login, Signup,ViewProfile} from "../src/pages/index.js"
+import {CareerGuide, CvAnalyzer, EditProfile, Home, InterviewGuide, Login, Signup,ViewProfile} from "../src/pages/index.js"
 
 const router = createBrowserRouter([
   {
@@ -51,6 +51,12 @@ const router = createBrowserRouter([
         path:'/view-profile',
         element:<AuthLayout authentication={true}>
           <ViewProfile/>
+        </AuthLayout>
+      },
+      {
+        path:'/edit-profile',
+        element:<AuthLayout authentication={true}>
+          <EditProfile/>
         </AuthLayout>
       }
     ]
