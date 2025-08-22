@@ -64,7 +64,7 @@ const Home = () => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-br from-indigo-950 via-gray-900 to-black text-white overflow-hidden">
+    <div className="w-full min-h-screen bg-gradient-to-tr from-indigo-900 via-gray-900 to-black text-white overflow-hidden">
       {/* Hero Section */}
       <motion.div
         className="flex flex-col lg:flex-row items-center justify-center max-w-7xl mx-auto pt-20 md:pt-32 px-4 sm:px-6 lg:px-8 gap-12"
@@ -77,7 +77,7 @@ const Home = () => {
             className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-500"
             variants={itemVariants}
           >
-            CAREERPARTO
+            <span className='text-white'>CAREERPARTO</span>
             <br />
             Your Path to Success
           </motion.h1>
