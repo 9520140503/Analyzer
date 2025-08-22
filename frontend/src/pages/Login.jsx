@@ -30,7 +30,7 @@ const LoginForm = () => {
     e.preventDefault();
     setLoader(true);
     setError('');
-    try {VITE_BACKEND_ENDPOINT
+    try {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_ENDPOINT}/user/login`,{
         method:"POST",
         headers:{
