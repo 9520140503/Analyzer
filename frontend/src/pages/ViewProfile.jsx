@@ -9,7 +9,7 @@ const InfoDiv = ({info, icon}) => {
     return (
          <motion.div 
          variants={itemVariants}
-         className='flex flex-col items-start justify-center mt-2 p-6'>
+         className='flex flex-col items-start justify-center p-4 bg-gray-300/20 rounded-md hover:border-2 hover:border-pink-300 duration-200 mt-4'>
             <motion.h2
             className='flex items-center gap-x-2 text-sm sm:text-md md:text-lg'
             >
@@ -44,7 +44,7 @@ const ViewProfile = () => {
     <motion.div
     variants={containerVariants}
     whileHover={{ scale: 1.05}}
-    className='w-full max-w-sm md:max-w-xl m-16 p-5 rounded-lg border-4 border-yellow-500 text-white bg-gray-950 mx-auto hover:shadow-lg hover:shadow-white'>
+    className='w-full max-w-sm md:max-w-md m-16 p-5 rounded-lg border-4 border-yellow-500 text-white bg-gray-950 mx-auto hover:shadow-lg hover:shadow-white'>
          <h1 className=' text-lg sm:text-xl md:text-2xl text-emerald-300 font-bold flex items-center justify-center gap-x-2'><User2 color='lightGreen'/>Profile</h1>
          <motion.div 
          variants={itemVariants}

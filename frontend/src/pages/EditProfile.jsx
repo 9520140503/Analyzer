@@ -85,7 +85,7 @@ function EditProfile() {
         ease: "easeInOut"
     }}
     style={{perspective:1000}}
-    className='w-full max-w-sm md:max-w-xl m-16 mt-24 p-2 rounded-lg border-4 border-purple-300 text-white bg-gray-950 mx-auto hover:shadow-lg hover:shadow-green-300'>
+    className='w-full max-w-sm md:max-w-lg m-16 mt-24 p-2 rounded-lg border-4 border-purple-300 text-white bg-gray-950 mx-auto hover:shadow-lg hover:shadow-green-300'>
         <h1 className='text-2xl font-bold mt-2 text-purple-300 flex  justify-center items-center gap-x-2'><Pencil/>Edit Profile</h1>
         <form onSubmit={handleSubmit} className='flex flex-col items-start justify-center p-5 w-full'>
            
