@@ -19,6 +19,7 @@ function Logout() {
 
         if(response.ok){
             dispatch(logout());
+            localStorage.removeItem('token');
             navigate('/login')
         }
 

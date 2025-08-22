@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import mainImage from "../../assets/guideIcon.png";
 import { Menu, X } from "lucide-react";
 import Avatar from './Avatar';
+import { motion } from 'framer-motion';
 
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
@@ -17,8 +18,7 @@ function Header() {
     { name: "Register", path: "/signup", status: !authStatus },
     { name: "Cv Analyzer", path: "/analyzer", status: authStatus },
     { name: "Career Guide", path: "/career-guide", status: authStatus },
-    { name: "Interview Guide", path: "/interview-guide", status: authStatus }
-  ];
+    { name: "Interview Guide", path: "/interview-guide", status: authStatus },  ];
   
   const token = localStorage.getItem('token');
 
@@ -53,7 +53,7 @@ function Header() {
   },[token])
 
   return (
-    <div className="w-full mx-auto mb-10  sticky top-0 left-0 z-50 shadow-lg shadow-white  backdrop-blur-md text-white px-4 md:px-8 py-3 flex items-center justify-between">
+    <div className="w-full mx-auto mb-10  sticky top-0 left-0 z-50 shadow-lg  backdrop-blur-md text-white px-4 md:px-8 py-3 flex items-center justify-between">
       {/* Logo */}
       <div className="flex items-center gap-2">
         <img src={mainImage} alt="" className="w-7 h-6 md:h-8 md:w-9" />
@@ -67,16 +67,18 @@ function Header() {
         {navItems.map(
           (navItem) =>
             navItem.status && (
-              <li key={navItem.path} className='text-xs lg:text-lg'>
+              <motion.li 
+              whileHover={{scale:1.1}}
+              key={navItem.path} className='text-xs lg:text-lg'>
                 <NavLink
                   to={navItem.path}
                   className={({ isActive }) =>
-                    isActive ? "text-purple-500" : "text-white"
+                    isActive ? "text-purple-300" : "text-white"
                   }
                 >
                   {navItem.name}
                 </NavLink>
-              </li>
+              </motion.li>
             )
         )}
 
@@ -94,7 +96,7 @@ function Header() {
 
       {/* Mobile Navigation */}
       {isMobile && (
-        <nav className="absolute top-full left-0 w-full bg-gray-950 backdrop-blur-lg shadow-md md:hidden">
+        <nav className="absolute top-full left-0 w-full bg-gray-950 backdrop-blur-lg shadow-md md:hidden p-1">
           <ul className="grid grid-cols-2 text-center">
             {navItems.map(
               (navItem) =>
@@ -104,7 +106,7 @@ function Header() {
                       to={navItem.path}
                       onClick={() => setIsMobile(false)}
                       className={({ isActive }) =>
-                        isActive ? "text-orange-500 font-bold" : "text-white"
+                        isActive ? "text-purple-300 font-bold" : "text-white"
                       }
                     >
                       {navItem.name}
@@ -114,7 +116,7 @@ function Header() {
             )}
 
             {authStatus &&
-            <li className='w-fit mx-auto'><Avatar userInfo={userData}/></li>}
+            <li className='mx-auto'><Avatar userInfo={userData}/></li>}
           </ul>
         </nav>
       )}

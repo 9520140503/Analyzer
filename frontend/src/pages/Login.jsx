@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
-import { Eye, EyeOff } from 'lucide-react'; // 👈 Lucide icons
+import { Eye, EyeOff } from 'lucide-react'; //
 import { Link, useNavigate } from 'react-router-dom';
 import { login } from "../Store/authSlice";
 import guideIcon from "../assets/guideIcon.png"
@@ -10,7 +10,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const [loader,setLoader] = useState(false);
   const [error, setError] = useState('');
-  const [showPassword, setShowPassword] = useState(false); // 👈 toggle state
+  const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setformData] = useState({
     email: "",
@@ -28,7 +28,8 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoader(true)
+    setLoader(true);
+    setError('');
     try {
       const response = await fetch('http://localhost:3000/user/login',{
         method:"POST",
@@ -43,14 +44,15 @@ const LoginForm = () => {
       if(response.ok){
         const {token} = data;
         localStorage.setItem('token',token);
+        toast.success("Login Successful")
         dispatch(login(data));
         setTimeout(() => {
           navigate('/')
-        },300);
+        },4000);
       }
       console.log("Login SuccessFull");
     } catch (error) {
-      console.log("Error",error.message);
+       setError(error.message);
     } finally{
       setLoader(false);
     }
@@ -58,6 +60,7 @@ const LoginForm = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
+      
       <div className="w-full max-w-4xl flex flex-col md:flex-row gap-6">
         {/* Logo and Heading Div */}
         <div className="hidden flex-1 md:flex flex-col items-center justify-center bg-white/10 backdrop-blur-lg border border-white/30 rounded-2xl p-8 shadow-lg hover:shadow-blue-300">
