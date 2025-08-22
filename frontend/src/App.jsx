@@ -3,7 +3,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { login } from './Store/authSlice';
+import { login } from './store/AuthSlice';
 import Loader from './components/Loader';
 function App() {
   const [loader,setLoader] = useState(false);

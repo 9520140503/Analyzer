@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { logout } from '../../Store/authSlice';
+import { logout } from '../../store/AuthSlice.js';
 import { useNavigate } from 'react-router-dom';
 
 function Logout() {
