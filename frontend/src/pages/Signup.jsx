@@ -94,7 +94,7 @@ const SignUp = () => {
             </div>
 
             {/* Password Field with Toggle */}
-            <div className="mb-4 relative">
+            <div className="mb-1 relative">
               <label htmlFor="password" className="block text-white text-sm mb-2">Password</label>
               <input
                 type={showPassword ? "text" : "password"}
@@ -113,6 +113,7 @@ const SignUp = () => {
                 {!showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </span>
             </div>
+            <p className='mb-4 text-blue-300 text-sm'>Note: Strong password is required</p>
 
             {error && <p className='text-center text-red-500 m-1'>{error}</p>}
 
