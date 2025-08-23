@@ -109,13 +109,14 @@ const LoginForm = () => {
                 {!showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </span>
             </div>
-            <p className='mb-4 text-blue-300 text-sm'>Note: Strong password is required</p>
+          
+             {!formData.password && <p className='mb-4 text-blue-300 text-sm'>Note: Strong password is required</p>}
 
             {error && <p className='text-center text-red-500 m-1'>{error}</p>}
 
             <button
               type="submit"
-              className="w-full p-3 bg-blue-600 text-white rounded-lg hover:bg-green-700 transition"
+              className="w-full p-3 bg-blue-600 text-white rounded-lg hover:bg-green-700 transition mt-2"
             >
              {loader ? "Logging" : "Log In"}
             </button>
