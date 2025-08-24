@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import guideIcon from "../assets/guideIcon.png";
 
 function Alert() {
-  const [userData, setUserData] = useState({});
+  const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -18,7 +18,7 @@ function Alert() {
         });
         const result = await response.json();
        
-        setUserData(result);
+        setUserInfo(result);
       } catch (error) {
         console.log(error.message);
       }
@@ -51,7 +51,7 @@ function Alert() {
           </Link>
           <Link
             to="/view-profile"
-            state={{userData}}
+            state={{userInfo}}
             className="bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200 text-center"
           >
             View Profile
