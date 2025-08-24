@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import guideIcon from "../Assets/guideIcon.png";
+import guideIcon from "../assets/guideIcon.png";
 
 function Alert() {
   const [userData, setUserData] = useState({});
