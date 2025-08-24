@@ -33,7 +33,7 @@ function Alert() {
           <img 
             src={guideIcon} 
             alt="robot icon"
-            className="w-16 h-16 sm:w-20 sm:h-20 object-contain duration-800 animate-spin" 
+            className="w-16 h-16 sm:w-20 sm:h-20 object-contain duration-800" 
           />
         </div>
         <h1 className="text-center text-2xl sm:text-3xl font-bold mt-4 mb-6 text-white">
@@ -51,7 +51,7 @@ function Alert() {
           </Link>
           <Link
             to="/view-profile"
-            state={userData}
+            state={{userData}}
             className="bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200 text-center"
           >
             View Profile
