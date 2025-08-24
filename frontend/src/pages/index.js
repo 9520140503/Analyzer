@@ -6,5 +6,6 @@ import CareerGuide from "./CareerGuide";
 import EditProfile from "./EditProfile";
 import InterviewGuide from "./InterviewGuide";
 import ViewProfile from "./ViewProfile";
+import UpdateAlert from "./UpdateAlert";
 
-export {Home,Login,Signup,CvAnalyzer,CareerGuide,InterviewGuide,ViewProfile,EditProfile} 
+export {Home,Login,Signup,CvAnalyzer,CareerGuide,InterviewGuide,ViewProfile,EditProfile, UpdateAlert} 

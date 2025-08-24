@@ -46,7 +46,7 @@ const LoginForm = () => {
         localStorage.setItem('token',token);
         dispatch(login(data));
         setTimeout(() => {
-          navigate('/')
+          navigate('/update-alert')
         },4000);
       }
       console.log("Login SuccessFull");
